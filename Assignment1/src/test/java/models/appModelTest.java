@@ -21,7 +21,7 @@ public class appModelTest extends NinjaDocTester{
     public void testObjCreation()
     {
         card newCard = new card();
-
+        assertThat(newCard,instanceOf(card.class));
     }
 
     @Test
