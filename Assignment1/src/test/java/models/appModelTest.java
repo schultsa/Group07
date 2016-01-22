@@ -10,6 +10,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import java.util.*;
 
 /**
  * Created by ramcharan on 1/20/16.
@@ -37,5 +38,14 @@ public class appModelTest extends NinjaDocTester{
         card newCard=new card("Diamond","Jack");
         assertEquals(newCard.suit,"Diamond");
         assertEquals(newCard.value,"Jack");
+    }
+
+    @Test
+    public void testBoard(){
+        board newBoard = new board();
+        card newCard = new card();
+        newBoard.init();
+        newBoard.addStack(0,newCard);
+        newBoard.topStack(0);
     }
 }
