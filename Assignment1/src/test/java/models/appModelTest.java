@@ -3,28 +3,51 @@ package models;
 import org.junit.Test;
 
 import ninja.NinjaDocTester;
+import org.doctester.testbrowser.Request;
+import org.doctester.testbrowser.Response;
+import org.hamcrest.CoreMatchers;
 
+import java.util.Stack;
+
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import java.util.*;
+
 /**
  * Created by ramcharan on 1/20/16.
  */
+
 public class appModelTest extends NinjaDocTester{
 
     @Test
     public void testObjCreation()
     {
-        card newCard=new card();
-        assertThat(newCard,instanceOf(card.class));
+        card newCard = new card();
+
     }
 
     @Test
-    public void testBoardCreation(){
-        board newBoard = new board();
-        assertThat(newBoard,instanceOf(board.class));
-
+    public void testParamObj()
+    {
+        card newCard=new card("Spade","Queen");
+        assertThat(newCard,instanceOf(card.class) );
     }
 
+    @Test
+    public void testParamOfObj()
+    {
+        card newCard=new card("Diamond","Jack");
+        assertEquals(newCard.suit,"Diamond");
+        assertEquals(newCard.value,"Jack");
+    }
+
+    @Test
+    public void testBoard(){
+        board newBoard = new board();
+        card newCard = new card();
+        newBoard.init();
+        newBoard.addStack(0,newCard);
+        newBoard.topStack(0);
+    }
 }
