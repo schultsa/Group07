@@ -23,4 +23,8 @@ public class board {
         System.out.println("Column: " + col);
         System.out.println("Top Element: " + boardArray[col].peek());
     }*/
+
+    public void removeStack(int col){
+        boardArray[col].pop();
+    }
 }
