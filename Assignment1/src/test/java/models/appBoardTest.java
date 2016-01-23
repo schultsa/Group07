@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * Created by Lee on 1/22/2016.
+ */
+
 import org.junit.Test;
 
 import ninja.NinjaDocTester;
@@ -14,34 +18,7 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
-/**
- * Created by ramcharan on 1/20/16.
- */
-
-public class appModelTest extends NinjaDocTester{
-
-    @Test
-    public void testObjCreation()
-    {
-        card newCard = new card();
-        assertThat(newCard,instanceOf(card.class));
-    }
-
-    @Test
-    public void testParamObj()
-    {
-        card newCard=new card("Spade","Queen");
-        assertThat(newCard,instanceOf(card.class) );
-    }
-
-    @Test
-    public void testParamOfObj()
-    {
-        card newCard=new card("Diamond","Jack");
-        assertEquals(newCard.suit,"Diamond");
-        assertEquals(newCard.value,"Jack");
-    }
-
+public class appBoardTest extends NinjaDocTester{
     @Test
     public void testBoard(){
         board newBoard = new board();
@@ -66,5 +43,16 @@ public class appModelTest extends NinjaDocTester{
         newBoard.init();
         newBoard.addStack(0,newCard);
         assertTrue(!(newBoard.boardArray[0].empty()));
+    }
+
+    @Test
+    public void testBoardRemove(){
+        board newBoard = new board();
+        card newCard = new card("Diamond", "Jack");
+        newBoard.init();
+        newBoard.addStack(0,newCard);
+        assertTrue(!(newBoard.boardArray[0].empty()));
+        newBoard.removeStack(0);
+        assertTrue(newBoard.boardArray[0].empty());
     }
 }
